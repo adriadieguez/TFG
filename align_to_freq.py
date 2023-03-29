@@ -2,6 +2,7 @@
 import sys
 from collections import Counter
 from Bio import SeqIO
+import itertools
 
 # Read FASTA file
 path = sys.argv[1]
@@ -20,7 +21,18 @@ for i in range (len_sequence):
 def normalize(x, len_sequence):
     return round(x/len_sequence, 4)
 
+# Compute all possible alignments
+alphabet = [0, 1, 2, 3]
+combinations = itertools.product(alphabet, repeat=n_sequences)
+sorted_combinations = sorted(combinations)
+for i in range(len(sorted_combinations)):
+    sorted_combinations[i] = ''.join([str(s) for s in sorted_combinations[i]])
+
+
 counter = Counter(v) # Count ocurrences
+for i in range(len(sorted_combinations)):
+    if sorted_combinations[i] not in counter:
+        counter[sorted_combinations[i]] = 0
 freqs = dict(map(lambda x: (x[0], normalize(x[1],len_sequence)),
             counter.items())) # From ocurrences to frequences
 
