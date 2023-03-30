@@ -13,10 +13,10 @@ n_sequences = len(sequences) # Number of sequences
 len_sequence = len(sequences[0].seq) # Length of sequences
 v = []
 for i in range (len_sequence):
-    str = ''
+    s = ''
     for k in range (n_sequences):
-        str += sequences[k].seq[i]
-    v.append(str)
+        s += sequences[k].seq[i]
+    v.append(s)
 
 def normalize(x, len_sequence):
     return round(x/len_sequence, 4)
