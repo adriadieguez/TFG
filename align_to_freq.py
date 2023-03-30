@@ -22,7 +22,7 @@ def normalize(x, len_sequence):
     return round(x/len_sequence, 4)
 
 # Compute all possible alignments
-alphabet = [0, 1, 2, 3]
+alphabet = ['A', 'G', 'C', 'T'] 
 combinations = itertools.product(alphabet, repeat=n_sequences)
 sorted_combinations = sorted(combinations)
 for i in range(len(sorted_combinations)):
